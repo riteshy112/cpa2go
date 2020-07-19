@@ -64,8 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:15px;" >No.</th>
 	                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width: 50px;" >Name</th>
 	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;" >No Of Questions</th>
-	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">No Of Audio Minutes</th>
-	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">No Of Video Minutes</th>
+
 	                         <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">Price</th>
 	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">Status</th>
 	                       <!--  <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 50px;" aria-label="Actions">Address</th> -->
@@ -79,8 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                            <td><?=$i?></td>
 	                            <td><?=$val->name?></td>
 	                            <td><?=$val->no_of_questions?></td>
-	                            <td><?=$val->no_of_audio_minutes?></td>
-	                            <td><?=$val->no_of_video_minutes?></td>
+	                           
 	                            <td><?=$val->price?></td>
 	                            <td><?=$val->status?></td>
 	                        

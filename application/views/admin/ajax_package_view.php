@@ -29,15 +29,7 @@
 				      		<td><?=$package_detail->no_of_questions?></td>
 				    	</tr>
 				    	
-				    	<tr>
-				      		<th>No Of Audio Minutes</th>
-				      		<td><?=$package_detail->no_of_audio_minutes?></td>
-				    	</tr>
 				    	
-				    	<tr>
-				      		<th>No Of Video Minutes</th>
-				      		<td><?=$package_detail->no_of_video_minutes?></td>
-				    	</tr>
 				    	
 				    	<tr>
 				      		<th>Status</th>

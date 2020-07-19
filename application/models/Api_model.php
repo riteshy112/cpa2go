@@ -52,8 +52,7 @@ Class Api_model extends CI_Model {
     } 
 
 
-   public function update($table_name, $field, $val, $data=array()){
-         
+   public function update($table_name, $field, $val, $data=array()){ 
       $this->db->where($field, $val);
       $this->db->update($table_name, $data);
     }

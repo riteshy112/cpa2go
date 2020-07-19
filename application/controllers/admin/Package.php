@@ -40,8 +40,8 @@ class Package extends CI_Controller {
 		$name = $this->input->post('name');
 		$description = $this->input->post('description');
 		$no_of_questions = $this->input->post('no_of_questions');
-		$no_of_audio_minutes = $this->input->post('no_of_audio_minutes');
-        $no_of_video_minutes = $this->input->post('no_of_video_minutes');
+		//$no_of_audio_minutes = $this->input->post('no_of_audio_minutes');
+       // $no_of_video_minutes = $this->input->post('no_of_video_minutes');
         $price = $this->input->post('price');
 		$status = $this->input->post('status');
 
@@ -54,12 +54,12 @@ class Package extends CI_Controller {
 		if(!empty($this->input->post('no_of_questions'))){
 			$rc_array['no_of_questions'] = $this->input->post('no_of_questions');
 		}
-		if(!empty($this->input->post('no_of_audio_minutes'))){
-			$rc_array['no_of_audio_minutes'] = $this->input->post('no_of_audio_minutes');
-		}
-		if(!empty($this->input->post('no_of_video_minutes'))){
-			$rc_array['no_of_video_minutes'] =  $this->input->post('no_of_video_minutes');
-		}
+		// if(!empty($this->input->post('no_of_audio_minutes'))){
+		// 	$rc_array['no_of_audio_minutes'] = $this->input->post('no_of_audio_minutes');
+		// }
+		// if(!empty($this->input->post('no_of_video_minutes'))){
+		// 	$rc_array['no_of_video_minutes'] =  $this->input->post('no_of_video_minutes');
+		// }
 		if(!empty($this->input->post('price'))){
 			$rc_array['price'] = $this->input->post('price');
         }

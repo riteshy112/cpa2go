@@ -70,9 +70,15 @@ $description = isset($package_data->description) ? $package_data->description : 
 											<input type="text" name="no_of_questions" class="form-control" placeholder="Enter no of questions" value="<?=$no_of_questions?>" required>
 											
 										</div>
-										<div class="col-lg-4">
+										<!-- <div class="col-lg-4">
 											<label class="col-form-label">* No Of Audio Minutes</label>
 											<input type="text" name="no_of_audio_minutes" id="no_of_audio_minutes" class="form-control" placeholder="Enter no of audio minutes" value="<?=$no_of_audio_minutes?>" required>
+										</div> -->
+
+										<div class="col-lg-4">
+											<label class="col-form-label">* Price</label>
+											<input type="text" name="price" class="form-control" placeholder="Enter the price" min="0" value="<?=$price?>"  required>
+											
 										</div>
 										
 									</div>
@@ -82,16 +88,12 @@ $description = isset($package_data->description) ? $package_data->description : 
 											<label class="col-form-label">Date Of Birth</label>
 											<input type="text" name="date_of_birth" class="form-control" placeholder="" value="">
 										</div> -->
-										<div class="col-lg-4">
-											<label class="col-form-label">* Price</label>
-											<input type="text" name="price" class="form-control" placeholder="Enter the price" min="0" value="<?=$price?>"  required>
-											
-										</div>
-										<div class="col-lg-4">
+									
+										<!-- <div class="col-lg-4">
 											<label class="col-form-label">* No Of Video Minutes</label>
 											<input type="text" name="no_of_video_minutes" class="form-control" placeholder="Enter No Of Video Minutes" value="<?=$no_of_video_minutes?>" required>
 											
-										</div>
+										</div> -->
 										<div class="col-lg-4">
 											<label class="col-form-label">Status</label>
                                             <select class="form-control" name="status">
@@ -101,23 +103,26 @@ $description = isset($package_data->description) ? $package_data->description : 
 											<!-- <input type="text" name="status" class="form-control" placeholder="Enter the web address" value="<?=$web_address?>" >
 											 -->
 										</div> 
-									</div>	
-									
-								</div>
-								
-								<div class="kt-section__body">
-									<div class="form-group row">
+
 										<div class="col-lg-4">
 											<label class="col-form-label">Description</label>
 											<textarea class="form-control" id="exampleTextarea" rows="3" name="description" ><?=$description?></textarea>
 											<!-- <span class="form-text text-muted">Please enter your full name</span> -->
 										</div>
 										
+
+									</div>	
+									
+								</div>
+								
+								<!-- <div class="kt-section__body">
+									<div class="form-group row">
+										
 										
 									</div>
 										
 									
-								</div>
+								</div> -->
 								
 							</div>
 						</div>
