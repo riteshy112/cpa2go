@@ -20,7 +20,36 @@ class Customer_list extends CI_Controller {
 		$data['user_list'] = array();
 		if($user_data->user_role == 1){
 			$data['user_list'] = $this->sys_model->get_list_with_join('users', 'user_role', '4');
+			
+			foreach ($data['user_list'] as $key => $value) {
+				 //$value->id
+			
+				
+				$this->db->order_by("user_plan_history.id", "desc");
+				$this->db->where('user_id', $value->id);
+				$this->db->select('*');
+				$this->db->from('user_plan_history');
+				$this->db->join('packages', 'user_plan_history.plan_id = packages.id', 'left'); 
+				$query = $this->db->get();
+				$userPlanHistory = $query->row();
+			
+
+				if(!empty($userPlanHistory)){
+					$value->package_name = $userPlanHistory->name;
+					$value->plan_start_date = $userPlanHistory->plan_start_date;
+					$value->plan_end_date = $userPlanHistory->plan_end_date;
+				}else{
+					$value->package_name = 'No Plan';
+					$value->plan_start_date = '-';
+					$value->plan_end_date =  '-';
+				}
+
+			
+			}
+			
+		
 		}else{	
+			
 			$ticket_customer_data = $this->sys_model->getsingle_list('customer_tickets', 'main_admin_id', $user_data->id);
 
 			$temp = array_unique(array_column($ticket_customer_data, 'customer_id'));
@@ -44,7 +73,30 @@ class Customer_list extends CI_Controller {
 		$user_id = $this->input->post('user_id');
 		$customer_list = $this->sys_model->get_list_with_join('users', 'id', $user_id);
 		
+
+		$this->db->order_by("user_plan_history.id", "desc");
+		$this->db->where('user_id', $user_id);
+		$this->db->select('*');
+		$this->db->from('user_plan_history');
+		$this->db->join('packages', 'user_plan_history.plan_id = packages.id', 'left'); 
+		$query = $this->db->get();
+		$userPlanHistory = $query->row();
+
+		//echo "<pre>"; print_r($userPlanHistory); exit;
+
 		$data['user_list'] = $customer_list[0];
+		if(!empty($userPlanHistory)){
+			$data['user_list']->package_name = $userPlanHistory->name;
+			$data['user_list']->plan_start_date = $userPlanHistory->plan_start_date;
+			$data['user_list']->plan_end_date = $userPlanHistory->plan_end_date;
+		}else{
+			$data['user_list']->package_name = 'No Plan';
+			$data['user_list']->plan_start_date = '-';
+			$data['user_list']->plan_end_date =  '-';
+		}
+		
+
+	//	echo "<pre>"; print_r($data['user_list']); exit;
 		//$data['user_list'] = $this->sys_model->getsinglerow('users', 'id', $user_id);
 		$this->load->view('admin/ajax_customer_view', $data);
 	}

@@ -106,7 +106,7 @@ class Login_api extends CI_Controller {
 			$this->db->select('*');
 			$this->db->from('user_plan_history');
 			$query1 = $this->db->get();
-			$package_data=$query1->row_array();  
+			$package_data=$query1->row();  
 			
 			
 			$userdata['message'] = 'Login successfully';

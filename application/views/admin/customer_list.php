@@ -50,10 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width:15px;" >No.</th>
 	                        <th class="sorting" tabindex="0"  rowspan="1" colspan="1" style="width: 50px;" >First Name</th>
 	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;" >Last Name</th>
-	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">Email Address</th>
-	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">State</th>
-	                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 50px;" aria-label="Actions">Zip Code</th>
-	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">Created Date</th>
+							<th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;" >Package Name</th>
+	                        <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;" >No of Questions</th>
+							<th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">Email Address</th>
+	                        <!-- <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">State</th>
+	                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 50px;" aria-label="Actions">Zip Code</th> -->
+	                        <!-- <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 50px;">Created Date</th> -->
 	                         <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 50px;" >Actions</th>
 	                    </tr>
 	                </thead>
@@ -63,10 +65,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                            <td><?=$i?></td>
 	                            <td><?=$val->first_name?></td>
 	                            <td><?=$val->last_name?></td>
+								
+								<td><?=$val->package_name?></td>
+								<td><?=$val->no_of_question_count?></td>
 	                            <td><?=$val->email_address?></td>
-	                            <td><?=$val->state_name?></td>
-	                            <td><?=$val->zip_code?></td>
-	                            <td><?= formatdate($val->created_date, "d-m-Y")?></td>
+	                            <!-- <td><?=$val->state_name?></td>
+	                            <td><?=$val->zip_code?></td> -->
+	                            <!-- <td><?= formatdate($val->created_date, "d-m-Y")?></td> -->
 	                            <td>
                                     <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md view_customer" title="Customer Details" data-toggle="modal" data-target="#view_customer" data-user-id="<?=$val->id?>"><i class="la la-eye"></i></a> 
                                     <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md view_tkt" title="View Tickets" data-toggle="modal" data-target="#view_tickets" data-user-id="<?=$val->id?>"><i class="la la-ticket"></i></a> 

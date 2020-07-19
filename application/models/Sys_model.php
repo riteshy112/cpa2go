@@ -115,7 +115,7 @@ Class Sys_model extends CI_Model {
       $this->db->where($tablename.'.'.$field, $val);
       $this->db->select($tablename.'.*, state_master.name as state_name');
       $this->db->from($tablename);
-      $this->db->join('state_master', $tablename.'.state = state_master.id', 'left');   
+      $this->db->join('state_master', $tablename.'.state = state_master.id', 'left'); 
       $query = $this->db->get();
       return $query->result();
    }

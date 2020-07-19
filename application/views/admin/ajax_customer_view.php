@@ -57,6 +57,50 @@
 		</div>
 		<!--end::Section-->
 	</div>
+
+	<div class="kt-portlet__head">
+		<div class="kt-portlet__head-label">
+		
+			<h3 class="kt-portlet__head-title">
+				Current Package Information:
+			</h3>
+		</div>
+	</div>
+
+	<div class="kt-portlet__body">
+		<!--begin::Section-->
+		<div class="kt-section">
+			<div class="kt-section__content">
+				<table class="table table-striped">
+				  	<tbody>
+				    	<tr style="word-break: break-all;">
+				      		<th>Package Name:</th>
+				      		<td><?=$user_list->package_name?></td>
+				    	</tr>
+				    	
+				    	<tr style="word-break: break-all;">
+				      		<th>No of Current Questions Count</th>
+				      		<td><?=$user_list->no_of_question_count?></td>
+				    	</tr>
+				    	
+				    	<tr style="word-break: break-all;">
+				      		<th>Plan Start Date</th>
+				      		<td><?=$user_list->plan_start_date?></td>
+				    	</tr>
+
+						<tr style="word-break: break-all;">
+				      		<th>Plan End Date</th>
+				      		<td><?=$user_list->plan_end_date?></td>
+				    	</tr>
+				    	
+				  	</tbody>
+				</table>
+			</div>
+		</div>
+		<!--end::Section-->
+	</div>
+
+
 	<div class="kt-portlet__head">
 		<div class="kt-portlet__head-label">
 			<h3 class="kt-portlet__head-title">
