@@ -195,6 +195,7 @@
 								
 							</ul>
 						</div>
+						
 						<div class="edq_tab_content tab-content text-left">
 							<?php $land_quas = $this->session->userdata('land_quas'); ?>
 							

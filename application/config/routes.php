@@ -97,6 +97,10 @@ $route['login'] = 'customer_register/login';
 $route['register'] = 'customer_register/index';
 $route['logout'] = 'customer_register/logout';
 $route['forgot/(:any)'] = 'customer_register/forgot/$1';
+
+
+$route['pack_list'] = 'package_list/index';
+
 $route['cpa_list'] = 'cpa_details/index';
 $route['get_cpa_details/(:any)'] = 'cpa_details/get_cpa_details/$1';
 $route['get_customer_ticket'] = 'ticket_details/index';

@@ -474,6 +474,56 @@ class Question_answer extends CI_Controller {
         exit;
     }
 
+    public function add_card_front_details(){
+       
+        $user_deta = $this->session->userdata('user_front');
+        $customer_id = $user_deta->id;
+        $card_number = str_replace(' ', '', $this->input->post('card_number'));
+        $exp_month = $this->input->post('exp_month');
+        $exp_year = $this->input->post('exp_year');
+        $cvv = $this->input->post('cvv_no');
+
+
+        require_once(FCPATH.'application/third_party/stripe/init.php');
+        
+        $stripe = array(
+            "secret_key"        => STRIPE_API_KEY,
+            "publishable_key"   => STRIPE_PUBLISHABLE_KEY
+        );
+
+        
+        \Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+        try {
+            $customer_data = \Stripe\Token::create([
+            'card' => [
+                'number' => $card_number,
+                'exp_month' => $exp_month,
+                'exp_year' => $exp_year,
+                'cvc' => $cvv
+                ]
+            ]);
+        } catch (Exception $ex) {
+            
+            // $userdata['message'] = 
+            // $userdata['status'] = 'false';
+            $msg = $ex->getMessage();
+            $succ_data = array('status' => 0, 'msg' => $msg);
+            echo json_encode($succ_data);  
+            exit;
+        } 
+
+        $token = $customer_data['id'];
+        $email = $user_deta->email_address;
+
+        $stripecustomer = $this->_create($email, $token);
+        $rc_array1['pay_customer_id'] = $stripecustomer['id'];
+        $this->front_model->update('users', 'id', $customer_id, $rc_array1);
+        $succ_data = array('status' => 1);
+        echo json_encode($succ_data);  
+        exit;
+
+    }
 
     public function add_card_details(){
 
@@ -526,6 +576,9 @@ class Question_answer extends CI_Controller {
         $stripecustomer = $this->_create($email, $token);
         $rc_array1['pay_customer_id'] = $stripecustomer['id'];
         $this->front_model->update('users', 'id', $customer_id, $rc_array1);
+
+
+
         $user_new_data = $this->front_model->getsinglerow('users', 'id', $customer_id);
         $this->session->set_userdata('user_front', $user_new_data);
 

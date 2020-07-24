@@ -49,12 +49,17 @@
 						</a>
 					</div>
 					<?php $class = $this->router->fetch_class(); 
+						
 						$user_data = $this->session->userdata('user_front');
 					?>
 					<div class="navigation">
 						<nav class="navbar navbar-expand-lg navbar-dark p-0">
 							<div class="collapse navbar-collapse nav_dropdown_box_2 justify-content-end nav_dropdonw_box" id="collapsibleNavbar">
 								<ul class="navbar-nav align-items-center">
+
+									<li class="nav-item nav_dropdown_box_link">
+										<a class="nav-link <?php if($class == 'package_list'){ ?>active<?php }?>" href="<?=base_url('pack_list')?>">Packages</a>
+									</li>
 									<li class="nav-item nav_dropdown_box_link">
 										<a class="nav-link <?php if($class == 'cpa_details'){ ?>active<?php }?>" href="<?=base_url('cpa_list')?>">Ask a Question</a>
 									</li>
