@@ -306,14 +306,15 @@
 							<div id="agora_local" style="display: none;"></div>
 						</div>	
 					</div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-sm-12">
 							<h4 style="margin-top: 25px;">$9.99</h4>
 						</div>
-					</div>
+					</div> -->
 					<div class="row">
 						<div class="col-sm-12" style="margin-top: 20px;">
-						<p class="paym_turm"><span style="color:red;">Important Notice* Payment will be processed in full upon submission of the answer to your query by the CPA. A response in 24 hours is guaranteed or the answer is free.</span></p>
+						<!-- <p class="paym_turm"><span style="color:red;">Important Notice* Payment will be processed in full upon submission of the answer to your query by the CPA. A response in 24 hours is guaranteed or the answer is free.</span></p> -->
+						<p class="paym_turm"><span style="color:red;">Important Notice*  A response in 24 hours is guaranteed or the answer is free.</span></p>
 						</div>	
 					</div>
 				
@@ -328,11 +329,12 @@
 
 <script type="text/javascript">
 	$('#text_button').click(function(){
-		var inner_html = "<span style='color:red;''>Important Notice* Payment will be processed in full upon submission of the answer to your query by the CPA. A response in 24 hours is guaranteed or the answer is free.</span>";
+		//var inner_html = "<span style='color:red;''>Important Notice* Payment will be processed in full upon submission of the answer to your query by the CPA. A response in 24 hours is guaranteed or the answer is free.</span>";
+		var inner_html = "<span style='color:red;''>Important Notice* A response in 24 hours is guaranteed or the answer is free.</span>";
 		$('.paym_turm').html(inner_html);
 	});
 	$('#audio_button').click(function(){
-		var inner_html = "<span style='color:red;''>Important Notice* Payment will be processed in full upon submission of the answer to your query by the CPA. A response in 24 hours is guaranteed or the answer is free.</span>";
+		var inner_html = "<span style='color:red;''>Important Notice* A response in 24 hours is guaranteed or the answer is free.</span>";
 		$('.paym_turm').html(inner_html);
 	});
 	$('#video_button').click(function(){
@@ -646,7 +648,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header justify-content-center">
-				<h5 class="modal-title" id="exampleModalLabel">You will be charged $9.99</h5>
+				<!-- <h5 class="modal-title" id="exampleModalLabel">You will be charged $9.99</h5> -->
+				<h5 class="modal-title" id="exampleModalLabel">Are you sure want to do this?</h5>
 			</div>
 			<div class="modal-body text-center">
 				<div class="modal_content text-center">
@@ -741,15 +744,15 @@
 			}, 5000);
 			return false;
 		}
-		if (pay_customer_id == '') {
-			$('#pay_question').val(text_question);
-			$('#pay_cpa_id').val(cpa_id);
-			$('#qus_status').val('1');
-			$('#add_card_details').modal('toggle');
-			$('#add_card_details').modal('show');
-			return false;
-			//add_card_details();
-		}
+		// if (pay_customer_id == '') {
+		// 	$('#pay_question').val(text_question);
+		// 	$('#pay_cpa_id').val(cpa_id);
+		// 	$('#qus_status').val('1');
+		// 	$('#add_card_details').modal('toggle');
+		// 	$('#add_card_details').modal('show');
+		// 	return false;
+		// 	//add_card_details();
+		// }
 		var url = '<?=base_url()?>' + 'question_answer/add_question';
 		$('.loader').show();
 		$.ajax({

@@ -30,6 +30,10 @@ class Question_answer extends CI_Controller {
         $user_deta = $this->session->userdata('user_front');
         $customer_id = $user_deta->id;
 
+        $UserCurrentData = $this->front_model->getsinglerow('users', 'id', $customer_id);
+        $currentQuestionCount=$UserCurrentData->no_of_question_count;
+        
+      
         $start_date = date('Y-m-d h:i:s', time());
         $newtimestamp = strtotime($start_date.' + 1440 minute');
         $end_date = date('Y-m-d h:i:s', $newtimestamp);
@@ -56,6 +60,12 @@ class Question_answer extends CI_Controller {
         $rc_array['end_date'] = $end_date;
         $rc_array['notif_status'] = 1;
         $this->front_model->insert_data('customer_tickets', $rc_array);
+
+        // update question count in users table
+        $newQuestionCount=$currentQuestionCount - 1;
+        $updateDataQuestionCount = array('no_of_question_count'=>$newQuestionCount);
+        $this->front_model->update('users','id',$customer_id,$updateDataQuestionCount);
+
         //CPA2GO: Your Question #11111 Has Been Answered
         $email = $cpa_data->email_address;
         $image_url = base_url().'assets/front/image/main_logo.png'; 
@@ -81,6 +91,11 @@ class Question_answer extends CI_Controller {
         $cpa_id = $this->input->post('cpa_id');
         $user_deta = $this->session->userdata('user_front');
         $customer_id = $user_deta->id;
+
+        $UserCurrentData = $this->front_model->getsinglerow('users', 'id', $customer_id);
+        $currentQuestionCount=$UserCurrentData->no_of_question_count;
+       
+      
         
         $start_date = date('Y-m-d h:i:s', time());
         $newtimestamp = strtotime($start_date.' + 1440 minute');
@@ -120,6 +135,13 @@ class Question_answer extends CI_Controller {
         }
         $this->front_model->insert_data('customer_tickets', $rc_array);
         $email = $user_deta->email_address;
+
+
+        // update question count in users table
+        $newQuestionCount=$currentQuestionCount - 1;
+        $updateDataQuestionCount = array('no_of_question_count'=>$newQuestionCount);
+        $this->front_model->update('users','id',$customer_id,$updateDataQuestionCount);
+
         
         //CPA2GO: Your Question #11111 Has Been Answered
         $image_url = base_url().'assets/front/image/main_logo.png'; 
@@ -318,6 +340,10 @@ class Question_answer extends CI_Controller {
         $cpa_id = $this->input->post('cpa_id');
         $user_deta = $this->session->userdata('user_front');
         $customer_id = $user_deta->id;
+
+        $UserCurrentData = $this->front_model->getsinglerow('users', 'id', $customer_id);
+        $currentQuestionCount=$UserCurrentData->no_of_question_count;
+
         $cpa_data = $this->front_model->getsinglerow('users', 'id', $cpa_id);
 
         // $ticket_data = $this->front_model->getsingle_list('customer_tickets', 'customer_id', $user_deta->id);
@@ -357,6 +383,12 @@ class Question_answer extends CI_Controller {
         $this->front_model->update('users', 'id', $cpa_id, $rc_arr);
         $this->front_model->update('users', 'id', $customer_id, $rc_arr);
         // $this->session->set_userdata('call_session', 0);
+
+        // update question count in users table
+        $newQuestionCount=$currentQuestionCount - 1;
+        $updateDataQuestionCount = array('no_of_question_count'=>$newQuestionCount);
+        $this->front_model->update('users','id',$customer_id,$updateDataQuestionCount);
+
         exit;
     }    
 
@@ -474,6 +506,32 @@ class Question_answer extends CI_Controller {
         exit;
     }
 
+
+    // public function pay_price($customer_id){
+
+    //     $cust_data = $this->front_model->getsinglerow('users', 'id', $customer_id);
+    //     require_once(FCPATH.'application/third_party/stripe/init.php');
+        
+    //     $stripe = array(
+    //         "secret_key"        => STRIPE_API_KEY,
+    //         "publishable_key"   => STRIPE_PUBLISHABLE_KEY
+    //     );
+
+    //     \Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+    //     //$customer_data = \Stripe\Customer::retrieve('');
+    //     //$customer_data = \Stripe\Customer::all(['limit' => 3]);
+    //     $amount = 9.99*100;
+
+    //     $charge = \Stripe\Charge::create([
+    //         'amount' => $amount,
+    //         'currency' => 'usd',
+    //         'customer' => $cust_data->pay_customer_id,
+    //     ]);
+    //     return;
+    // }
+
+
     public function add_card_front_details(){
        
         $user_deta = $this->session->userdata('user_front');
@@ -483,6 +541,14 @@ class Question_answer extends CI_Controller {
         $exp_year = $this->input->post('exp_year');
         $cvv = $this->input->post('cvv_no');
 
+        $planId = $this->input->post('planId');
+        $plan_data = $this->front_model->getsinglerow('packages', 'id', $planId);
+        $plan_no_of_questions =  $plan_data->no_of_questions;
+        $plan_price = $plan_data->price;
+
+      
+
+     //   echo "<pre>"; print_r($planId); exit;
 
         require_once(FCPATH.'application/third_party/stripe/init.php');
         
@@ -518,7 +584,33 @@ class Question_answer extends CI_Controller {
 
         $stripecustomer = $this->_create($email, $token);
         $rc_array1['pay_customer_id'] = $stripecustomer['id'];
+        
+        $amount =$plan_price*100;
+        
+        $charge = \Stripe\Charge::create([
+            'amount' => $amount,
+            'currency' => 'usd',
+            'customer' => $stripecustomer['id'],
+        ]);
+        
+        $UserCurrentData = $this->front_model->getsinglerow('users', 'id', $customer_id);
+        $currentQuestionCount=$UserCurrentData->no_of_question_count;
+        
+        $newQuestionCount=$currentQuestionCount + $plan_no_of_questions;
+     //   $updateDataQuestionCount = array('no_of_question_count'=>$newQuestionCount);
+     //   $this->front_model->update('users','id',$customer_id,$updateDataQuestionCount);
+        $rc_array1['no_of_question_count'] = $newQuestionCount;    
         $this->front_model->update('users', 'id', $customer_id, $rc_array1);
+
+
+         //user_plan_history
+         $data = array();
+         $data['user_id'] =  $customer_id;
+         $data['plan_id'] = $planId;
+         $data['plan_start_date'] = date('Y-m-d H:i:s');
+         $data['plan_end_date'] = date('Y-m-d H:i:s', strtotime('+1 month', strtotime($data['plan_start_date'])));
+         $response=$this->front_model->insert_data('user_plan_history',$data);
+
         $succ_data = array('status' => 1);
         echo json_encode($succ_data);  
         exit;

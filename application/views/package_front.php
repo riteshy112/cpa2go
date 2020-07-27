@@ -41,10 +41,13 @@
 								</div>
                                
 							</div>
+
+							<?php if($showBuy == 0){ ?>
 							<div class="ecbd_btn">
-								
-								<a href="#" price="<?php echo $value->price ;?>" class="ecbd_last_btn buy">Buy</a>
+								<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" class="ecbd_last_btn buy">Buy</a>
 							</div>
+							<?php } ?>
+
 							
 						</div>
 						
@@ -58,8 +61,18 @@
 
 			</div>
 		</div>
+		<div class="row">
+		<div class="ec_box d-inline-block col-lg-6 col-md-6 col-sm-12 col-12 text-left">
+		    Current Question Count : <?php echo $no_of_question_count;?>
+			</br>
+			Expire Date : <?php echo $plan_end_date;?>
+		</div>
+		
+		</div>
 	</div>
 </div>
+
+
 
 
 <div class="modal fade" id="charges_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,7 +86,8 @@
 					
 						<input type="hidden" value="" name="" class="text_question" />
 						<input type="hidden" value="" name="" class="cpa_id"/>
-						<input type="hidden" value="" name="" class="pay_customer_id"/>
+						<input type="hidden" id="pay_customer_id" name="pay_customer_id" class="pay_customer_id"/>
+						
 						
 						
 						<div class="form_content form-group m-0 sub_btn">
@@ -106,6 +120,7 @@
 				<input type="hidden" name="pay_question" id="pay_question" value=""/>
 				<input type="hidden" name="pay_cpa_id" id="pay_cpa_id" value=""/>
 				<input type="hidden" name="qus_status" id="qus_status" value=""/>
+				<input type="hidden"  name="planId" id="planId"/>
 				<div class="modal-body text-center">
 					<p class="card_validation" style="color: red;"></p>
 					<div class="payment">
@@ -179,6 +194,8 @@
 
 	$(document).on('click', '.buy', function() {
 		var price = $(this).attr('price');
+		var planId = $(this).attr('plan');
+		$("#planId").val(planId);
 		$("#exampleModalLabel").text("You will be charged $"+price);
 	//	var pay_customer_id = $('#pay_customer_id').val();
 	//	$('.pay_customer_id').val(pay_customer_id);
@@ -191,7 +208,9 @@
 		$('#charges_popup').modal('toggle');
 		$('#charges_popup').modal('hide');
 		var pay_customer_id = $('#pay_customer_id').val();
-		console.log(pay_customer_id);
+
+		
+		
 		if (pay_customer_id == '' || typeof pay_customer_id === "undefined") {
 			//$('#pay_question').val(text_question);
 		//	$('#pay_cpa_id').val(cpa_id);
