@@ -40,10 +40,11 @@ class Package_list extends CI_Controller {
         if($current_date > $current_package->plan_end_date){
             $showBuy = 1;
         }
+       
         if($no_of_question_count == 0){
             $showBuy = 1;
         }
-      
+     
         $data['no_of_question_count'] = $no_of_question_count;
         $data['showBuy'] = $showBuy;
       

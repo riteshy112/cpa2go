@@ -42,7 +42,7 @@
                                
 							</div>
 
-							<?php if($showBuy == 0){ ?>
+							<?php if($showBuy == 1){ ?>
 							<div class="ecbd_btn">
 								<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" class="ecbd_last_btn buy">Buy</a>
 							</div>
