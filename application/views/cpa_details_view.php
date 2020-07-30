@@ -83,8 +83,16 @@
 					<div class="ed_question">
 						<div class="ed_title green">
 							<h3>Ask Question as</h3>
+							<h5>Your left no of question count is : <?php echo $no_of_question_count;?> </h5>
+							<?php if($no_of_question_count == 0){ ?>	
+							   <a href="/cpa2go/pack_list" >Buy Packages</a>
+							<?php }?>
+						
 						</div>
 						<div class="ed_title divider"></div>
+						
+						<?php if($no_of_question_count > 0){ ?>		
+						
 						<div class="edq_content">
 							<ul class="edq_box row nav nav-tabs">
 								<li class="edqb_box nav-item col-lg-4 col-md-4 col-sm-4 col-4">
@@ -196,8 +204,13 @@
 							</ul>
 						</div>
 						
+							<?php } ?>			
+
+
 						<div class="edq_tab_content tab-content text-left">
 							<?php $land_quas = $this->session->userdata('land_quas'); ?>
+							
+							<?php if($no_of_question_count > 0){ ?>	
 							
 							<div id="text" class="container tab-pane active">
 								<form action="#" method="post">
@@ -211,6 +224,8 @@
 									</div>
 								</form>
 							</div>
+							<?php } ?>		
+
 							<div id="audio" class="container tab-pane fade text-center">
 								<form action="" method="get">
 									<div class="form-group m-0">
@@ -225,7 +240,7 @@
 	c0,71.687,56.13,130.346,126.724,134.743v42.671h-42.241c-4.662,0-8.448,3.778-8.448,8.448s3.787,8.448,8.448,8.448h101.379
 	c4.662,0,8.448-3.778,8.448-8.448s-3.786-8.448-8.448-8.448h-42.241v-42.671c70.598-4.397,126.724-63.064,126.724-134.743V256
 	C391.172,251.326,387.386,247.552,382.725,247.552" />
-													<path d="M256,399.621c51.242,0,92.931-41.689,92.931-92.932V103.931C348.931,52.692,307.242,11,256,11
+	<path d="M256,399.621c51.242,0,92.931-41.689,92.931-92.932V103.931C348.931,52.692,307.242,11,256,11
 	c-51.238,0-92.931,41.692-92.931,92.931v202.759C163.069,357.932,204.762,399.621,256,399.621 M179.966,103.931
 	c0-41.928,34.114-76.034,76.034-76.034s76.034,34.106,76.034,76.034v202.759c0,41.928-34.114,76.035-76.034,76.035
 	s-76.034-34.107-76.034-76.035V103.931z" />

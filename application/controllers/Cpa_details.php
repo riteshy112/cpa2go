@@ -53,8 +53,12 @@ class Cpa_details extends CI_Controller {
     	// $cpa_id = $this->input->post('cpa_id');
 
     	$user_data = $this->session->userdata('user_front');
-        //$cpa_id = $user_data->id;
-        
+		
+	   
+		$user_current_no_of_question_count = $this->front_model->getsinglerow('users', 'id', $user_data->id);
+		//echo "<pre>"; print_r($user_current_no_of_question_count->no_of_question_count); exit;
+		//$cpa_id = $user_data->id;
+
         $cpa_data = $this->front_model->getsinglerow('users', 'id', $cpa_id);
         $ratting_review = $this->front_model->get_ratting_review($cpa_id);
         $ratting_reviews = array();
@@ -95,7 +99,9 @@ class Cpa_details extends CI_Controller {
     	if(!empty($data['cpa_data']->user_image)){
 			$data['cpa_data']->user_image = !empty($data['cpa_data']->user_image) ? base_url().'uploads/user_images/'.$data['cpa_data']->user_image : '';
 		}
-		
+
+		$data['no_of_question_count'] = $user_current_no_of_question_count->no_of_question_count;
+	//	echo "<pre>"; print_r($data); exit;
     	$this->load->view('header');
     	$this->load->view('cpa_details_view', $data);
     	$this->load->view('footer');
