@@ -45,7 +45,7 @@
 							<?php if(isset($current_plan_id) && $current_plan_id== $value->id){ ?>
 							<div class="ecbd_review">
 								<div class="ecb_content">
-								<?php echo "Auto Renew: "?><input planattr="<?php echo $value->id; ?>" id="toggleautorenew" type="checkbox" <?php if(isset($autoyes) && $autoyes=='1'){ echo 'checked'; }?>  data-toggle="toggle">
+								<?php echo "Auto Renew: "?> &nbsp;&nbsp;<input planattr="<?php echo $value->id; ?>" id="toggleautorenew" type="checkbox" <?php if(isset($autoyes) && $autoyes=='1'){ echo 'checked'; }?>  data-toggle="toggle">
 								</div>
                                
 							</div>
