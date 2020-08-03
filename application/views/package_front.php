@@ -1,5 +1,6 @@
 <!-- Content Section -->
-
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <div id="expert">
 	<div class="container">
 		<div class="row">
@@ -41,12 +42,27 @@
 								</div>
                                
 							</div>
-
-							<?php if($showBuy == 1){ ?>
-							<div class="ecbd_btn">
-								<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" class="ecbd_last_btn buy">Buy</a>
+							<?php if(isset($current_plan_id) && $current_plan_id== $value->id){ ?>
+							<div class="ecbd_review">
+								<div class="ecb_content">
+								<?php echo "Auto Renew: "?><input planattr="<?php echo $value->id; ?>" id="toggleautorenew" type="checkbox" <?php if(isset($autoyes) && $autoyes=='1'){ echo 'checked'; }?>  data-toggle="toggle">
+								</div>
+                               
 							</div>
 							<?php } ?>
+							
+							<?php //if($showBuy == 1){ ?>
+							<div class="ecbd_btn">
+							
+								<?php if(isset($current_plan_id) && $current_plan_id== $value->id){ ?>
+									
+									<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" class="ecbd_last_btn buy" >Active Package</a>
+								<?php }else{ ?>
+									<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" style="background-color:#007bff !important" class="ecbd_last_btn buy">Buy</a>
+								<?php }?>
+								
+							</div>
+							<?php //} ?>
 
 							
 						</div>
@@ -61,14 +77,16 @@
 
 			</div>
 		</div>
+		<?php if(isset($plan_end_date)){ ?>
 		<div class="row">
-		<div class="ec_box d-inline-block col-lg-6 col-md-6 col-sm-12 col-12 text-left">
-		    Current Question Count : <?php echo $no_of_question_count;?>
-			</br>
-			Expire Date : <?php echo $plan_end_date;?>
-		</div>
+			<div class="ec_box d-inline-block col-lg-6 col-md-6 col-sm-12 col-12 text-left">
+				Current Question Count : <?php echo $no_of_question_count;?>
+				</br>
+				Expire Date : <?php echo  date('Y-m-d',strtotime($plan_end_date)); ?>
+			</div>
 		
 		</div>
+		<?php }?>
 	</div>
 </div>
 
@@ -166,7 +184,7 @@
 					</div>
 				</div>
 				<div class="modal-footer justify-content-center">
-					<button type="submit" class="btn btn-secondary">Done</button>
+					<button type="submit" class="btn btn-secondary addcardbuttonsubmit">Done</button>
 				</div>
 				<div class="footer_cont"><p>Processed by Stripe. CPA2GO doesn't store your payment info</p></div>
 			</form>
@@ -185,6 +203,45 @@
 <script src="<?=base_url()?>assets/front/js/script.js"></script>
 
 <script type="text/javascript">
+
+
+
+  $(function() {
+   
+
+	$('#toggleautorenew').change(function() {
+	//	console.log();
+		var toggleAutoRenew= $(this).prop('checked');
+		var plan_id = $(this).attr('planattr');
+		var url = '<?=base_url()?>' + 'question_answer/manageAutoRenew';
+		var user_id = '<?php echo $user_id;?>';	
+		if(toggleAutoRenew==true){
+			
+			$.ajax({
+				url: url,
+				type: "POST",
+				data: {'autorenew':'on','user_id':user_id,'plan_id':plan_id},
+				success: function(response) {
+					//var data = JSON.parse(response);
+					
+				}
+			});
+
+		}else{
+			$.ajax({
+				url: url,
+				type: "POST",
+				data: {'autorenew':'off','user_id':user_id,'plan_id':plan_id},
+				success: function(response) {
+					//var data = JSON.parse(response);
+					
+				}
+			});
+		}
+    })
+
+  })
+
 
 	$(document).on('click', '.close_charges_popup', function(){
 		$('#charges_popup').modal('toggle');
@@ -228,9 +285,13 @@
 
 	$('#add_card_data').submit(function(e) {
 
+		$(".addcardbuttonsubmit").hide();
+
 			e.preventDefault();
 			var all_data = $('#add_card_data').serialize();
 			var url = '<?=base_url()?>' + 'question_answer/add_card_front_details';
+			
+			
 			$.ajax({
 				url: url,
 				type: "POST",
@@ -244,6 +305,7 @@
 
 						$('#add_card_details').modal('toggle');
 						$('#add_card_details').modal('hide');
+
 						setTimeout(function() {
 							alert('payment success');
 							location.reload();
@@ -259,6 +321,7 @@
 						setTimeout(function() {
 							$('.card_validation').slideUp();
 						}, 5000);
+						$(".addcardbuttonsubmit").show();
 						return false;
 					}
 				}

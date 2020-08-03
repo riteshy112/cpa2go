@@ -34,20 +34,39 @@ class Package_list extends CI_Controller {
         $this->db->from('user_plan_history');
         $query =  $this->db->get(); 
         $current_package = $query->row();  
-        $current_date = date('Y-m-d H:i:s');
-        $data['plan_end_date'] = $current_package->plan_end_date;
-        $showBuy = 0;
-        if($current_date > $current_package->plan_end_date){
-            $showBuy = 1;
-        }
-       
-        if($no_of_question_count == 0){
-            $showBuy = 1;
-        }
-     
-        $data['no_of_question_count'] = $no_of_question_count;
-        $data['showBuy'] = $showBuy;
+
       
+        $current_date = date('Y-m-d H:i:s');
+
+        $showBuy = 0;
+
+        if(!empty($current_package)){
+
+
+            $data['plan_end_date'] = $current_package->plan_end_date;
+            if($current_date > $current_package->plan_end_date){
+                $showBuy = 1;
+            }
+            if($no_of_question_count == 0){
+                $showBuy = 1;
+            }
+            $data['no_of_question_count'] = $no_of_question_count;
+            $data['showBuy'] = $showBuy;
+            $data['current_plan_id'] = $current_package->plan_id;
+
+        }
+       // echo "<pre>"; print_r($data);exit;
+        
+
+        $data['user_id'] = $customer_id;
+
+
+        $autorenewcheck = $this->front_model->getsinglerow('auto_renew_user','user_id',$customer_id);
+        
+        if(!empty($autorenewcheck)){
+            $data['autoyes'] = '1';
+        }
+
 	    $this->load->view('header');
 		$this->load->view('package_front',$data);
 		$this->load->view('footer');

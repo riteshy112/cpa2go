@@ -12,6 +12,11 @@
 				<input type="hidden" name="pay_customer_id" id="pay_customer_id" value="<?=$user_data->pay_customer_id?>" />
 				<input type="hidden" name="cpa_id" id="cpa_id" value="<?=$cpa_data->id?>" />
 				<div class="expert_details">
+
+					<?php if(isset($no_of_question_count)) { ?>
+						<p style="text-align: right;">Available questions : <?php echo $no_of_question_count;?></p>
+					<?php } ?>
+					
 					<div class="ed_profilepic">
 						<?php $user_image = !empty($cpa_data->user_image) ? $cpa_data->user_image : base_url().'assets/images/unknown-512.png'; ?>
 						<div class="edp_img" style="background-image: url('<?=$user_image?>');">
@@ -83,7 +88,7 @@
 					<div class="ed_question">
 						<div class="ed_title green">
 							<h3>Ask Question as</h3>
-							<h5>Your left no of question count is : <?php echo $no_of_question_count;?> </h5>
+							
 							<?php if($no_of_question_count == 0){ ?>	
 							   <a href="/cpa2go/pack_list" >Buy Packages</a>
 							<?php }?>

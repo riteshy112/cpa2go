@@ -41,6 +41,27 @@ class Cpa_details extends CI_Controller {
 			}	
 			$cpa_datas[] = $val;
 		}
+
+		$user_current_no_of_question_count = $this->front_model->getsinglerow('users', 'id', $user_deta->id);
+		$all_cpa_data['no_of_question_count'] = $user_current_no_of_question_count->no_of_question_count;
+
+
+		$this->db->order_by("id", "desc");
+        $this->db->where('user_id', $user_deta->id);
+        $this->db->select('*');
+        $this->db->from('user_plan_history');
+        $query =  $this->db->get(); 
+        $current_package = $query->row();  
+
+
+		if(!empty($current_package)){
+
+			$all_cpa_data['plan_end_date'] = date('Y-m-d',strtotime($current_package->plan_end_date)); 
+			$all_cpa_data['plan_end_time'] = date('H:i:s',strtotime($current_package->plan_end_date)); 
+
+        }
+
+		
 		$all_cpa_data['cpa_list'] = $cpa_datas;
 		$this->load->view('header');
 		$this->load->view('cpa_view', $all_cpa_data);

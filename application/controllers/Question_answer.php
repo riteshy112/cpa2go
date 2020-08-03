@@ -531,6 +531,20 @@ class Question_answer extends CI_Controller {
     //     return;
     // }
 
+    public function manageAutoRenew(){
+        $autorenew = $this->input->post('autorenew');
+        $user_id = $this->input->post('user_id');
+        $plan_id = $this->input->post('plan_id');
+        $this->front_model->delete('auto_renew_user', 'user_id', $user_id);
+      
+        if($autorenew=='on'){
+            $data['user_id'] = $user_id;
+            $data['plan_id'] = $plan_id;
+            $this->front_model->insert_data('auto_renew_user',$data);
+        }
+    }
+
+
 
     public function add_card_front_details(){
        
