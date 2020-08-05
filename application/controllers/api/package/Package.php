@@ -26,6 +26,22 @@ class Package extends CI_Controller {
         exit;	
     }
 
+    public function deductCount(){
+        $user_id = $this->input->post('user_id');
+        $userInfo=$this->api_model->getsinglerow('users','id',$user_id);
+        $update_count = $userInfo['no_of_question_count'] - 1;
+
+        $update_data = ['no_of_question_count'=>$update_count];
+        $this->api_model->update('users','id',$user_id,$update_data);
+
+        $user_data['message'] = '';
+        $user_data['status'] = 'true';
+        $user_data['details'] = $update_data;
+        echo json_encode($user_data);
+        exit;
+
+    }
+
     public function packagePurchase(){
         $data['user_id'] = $this->input->post('user_id');
         $data['plan_id'] = $this->input->post('plan_id');

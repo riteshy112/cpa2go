@@ -124,6 +124,8 @@ $route['package_list_api'] = 'api/package/package';
 $route['package_details'] = 'api/package/package/packageDetails';
 $route['package_purchase'] = 'api/package/package/packagePurchase';
 
+$route['deduct_count'] = 'api/package/package/deductCount';
+
 $route['register_customer_api'] = 'api/customer/register_api';
 $route['login_with_facebook'] = 'api/customer/register_api/login_with_facebook';
 $route['forgot_pass'] = 'api/customer/login_api/forgot_pass';
