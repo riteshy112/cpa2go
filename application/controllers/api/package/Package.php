@@ -42,6 +42,35 @@ class Package extends CI_Controller {
 
     }
 
+    public function addPackage(){
+        $user_id = $this->input->post('user_id');
+        $planType=$this->input->post('plan_type');
+        if($planType=='Gold'){
+            $plusCount = 10;
+        }elseif($planType=='Silver'){
+            $plusCount = 5;
+        }
+        elseif($planType=='Bronze'){
+            $plusCount = 3;
+        }elseif($planType=='Single'){
+            $plusCount = 1;
+        }else{
+            $plusCount = 0;
+        }
+
+        $userInfo=$this->api_model->getsinglerow('users','id',$user_id);
+        $update_count = $userInfo['no_of_question_count'] + $plusCount;
+
+        $update_data = ['no_of_question_count'=>$update_count];
+        $this->api_model->update('users','id',$user_id,$update_data);
+
+        $user_data['message'] = '';
+        $user_data['status'] = 'true';
+        $user_data['details'] = $update_data;
+        echo json_encode($user_data);
+        exit;
+    }
+
     public function packagePurchase(){
         $data['user_id'] = $this->input->post('user_id');
         $data['plan_id'] = $this->input->post('plan_id');
