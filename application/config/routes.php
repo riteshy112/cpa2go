@@ -125,7 +125,7 @@ $route['package_details'] = 'api/package/package/packageDetails';
 $route['package_purchase'] = 'api/package/package/packagePurchase';
 $route['deduct_count'] = 'api/package/package/deductCount';
 $route['add_package'] = 'api/package/package/addPackage';
-
+$route['user_get_count'] = 'api/package/package/userGetCount';
 
 
 $route['register_customer_api'] = 'api/customer/register_api';

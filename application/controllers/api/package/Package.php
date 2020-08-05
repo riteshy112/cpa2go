@@ -42,6 +42,18 @@ class Package extends CI_Controller {
 
     }
 
+    public function userGetCount(){
+        $user_id = $this->input->post('user_id');
+        $userInfo=$this->api_model->getsinglerow('users','id',$user_id);
+        $update_count = $userInfo['no_of_question_count'];
+        $update_data = ['no_of_question_count'=>$update_count];
+        $user_data['message'] = '';
+        $user_data['status'] = 'true';
+        $user_data['details'] = $update_data;
+        echo json_encode($user_data);
+        exit;
+    }
+
     public function addPackage(){
         $user_id = $this->input->post('user_id');
         $planType=$this->input->post('plan_type');
