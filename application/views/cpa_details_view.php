@@ -14,7 +14,7 @@
 				<div class="expert_details">
 
 					<?php if(isset($no_of_question_count)) { ?>
-						<p style="text-align: right;">Available questions : <?php echo $no_of_question_count;?></p>
+						<p style="text-align:right;"><span style="background-color:#3AFFFF;color:black;">Available questions : <?php echo $no_of_question_count;?></span></p>
 					<?php } ?>
 					
 					<div class="ed_profilepic">

@@ -77,12 +77,26 @@
 
 			</div>
 		</div>
+
+
+		<div class="row">
+			<div class="ec_box d-inline-block col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+				<p style="color:red">**Terms and Conditions</p>
+				<p style="color:red">1) Users can rollover their remaining question count to the next month regardless if they choose to renew their subscription or not.</p>
+		       
+				<p style="color:red">2) Refunds are only possible within 30 days if no questions were used. </p>							
+			</div>
+		
+		</div>
+
+	     </br>								
+
 		<?php if(isset($plan_end_date)){ ?>
 		<div class="row">
 			<div class="ec_box d-inline-block col-lg-6 col-md-6 col-sm-12 col-12 text-left">
 				Current Question Count : <?php echo $no_of_question_count;?>
 				</br>
-				Expire Date : <?php echo  date('Y-m-d',strtotime($plan_end_date)); ?>
+				Expiration Date : <?php echo  date('Y-m-d',strtotime($plan_end_date)); ?>
 			</div>
 		
 		</div>
@@ -186,7 +200,7 @@
 				<div class="modal-footer justify-content-center">
 					<button type="submit" class="btn btn-secondary addcardbuttonsubmit">Done</button>
 				</div>
-				<div class="footer_cont"><p>Processed by Stripe. CPA2GO doesn't store your payment info</p></div>
+				<div style="margin:20px 20px 20px 20px" class="footer_cont"><p>Processed by Stripe. CPA2GO doesn't store your payment info</p></div>
 			</form>
 		</div>
 	</div>

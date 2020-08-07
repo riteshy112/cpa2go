@@ -200,11 +200,11 @@
 </style>
 
 
-<div style="text-align:right">
-	<p>Current Question Count :<?php echo $no_of_question_count;?>&nbsp;&nbsp;</p>
-	<p>Expire Date : <?php if(isset($plan_end_date)){ echo $plan_end_date; }else { echo "-";} ?> &nbsp;&nbsp;</p>
-	<p>Expire Time : <?php if(isset($plan_end_time)){ echo $plan_end_time; }else { echo "-";} ?> &nbsp;&nbsp;</p>
-</div>
+<!-- <div style="text-align:right">
+	<p>Current Question Count :<?php //echo $no_of_question_count;?>&nbsp;&nbsp;</p>
+	<p>Expire Date : <?php //if(isset($plan_end_date)){ echo $plan_end_date; }else { echo "-";} ?> &nbsp;&nbsp;</p>
+	<p>Expire Time : <?php //if(isset($plan_end_time)){ echo $plan_end_time; }else { echo "-";} ?> &nbsp;&nbsp;</p>
+</div> -->
 
 <script type="text/javascript">
 	var land_quas = '<?=$land_quas?>';
