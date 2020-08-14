@@ -66,7 +66,11 @@ class Package extends CI_Controller {
             $plusCount = 3;
         }elseif($planType=='Single'){
             $plusCount = 1;
-        }else{
+        }
+        elseif($planType=='Testing'){
+            $plusCount = 1;
+        }
+        else{
             $plusCount = 0;
         }
 
