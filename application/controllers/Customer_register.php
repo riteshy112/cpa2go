@@ -215,7 +215,7 @@ class Customer_register extends CI_Controller {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$password_to = sha1($password);
-
+		
 		
 
 		$exist = $this->front_model->check_pass('users', 'email_address', $email, 'password', $password_to);
@@ -228,8 +228,9 @@ class Customer_register extends CI_Controller {
 	    	if(!empty($browser_name)){
 				$rc_arr['browser_type'] = $browser_name;
 	    	}
-
+			echo "<pre>"; print_r($user_data); exit;
 			$this->front_model->update('users', 'email_address', $email, $rc_arr);
+			//echo $user_data->user_role; exit;
 			if($user_data->user_role == 3 OR $user_data->user_role == 4){
 				$this->session->set_userdata('user_front', $user_data);
 				echo $user_data->user_role;

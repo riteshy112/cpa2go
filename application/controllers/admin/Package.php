@@ -81,11 +81,11 @@ class Package extends CI_Controller {
 		}
     }
     
-    // public function delete($id){
-    //     $this->sys_model->delete('packages', 'id', $id);
-	// 	$this->session->set_flashdata('delete_msg', 'Package deleted successfully');
-	// 	redirect(base_url().'package_list');
-    // }
+    public function delete($id){
+        $this->sys_model->delete('packages', 'id', $id);
+		$this->session->set_flashdata('delete_msg', 'Package deleted successfully');
+		redirect(base_url().'package_list');
+    }
     
     public function view_data(){
         $id = $this->input->post('id');

@@ -87,7 +87,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                     <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md view_admin" title="View" data-toggle="modal" data-target="#view_popup" data-user-id="<?=$val->id?>"><i class="la la-eye"></i></a>  
 
-                                    <!-- <a href="<?=base_url()?>package_delete/<?=$val->id?>" class="btn btn-sm btn-clean btn-icon btn-icon-md delete_admin" onclick="return confirm('Are you sure you want to delete?')" title="Delete" ><i class="la la-trash"></i></a>    -->
+                                   <a href="<?=base_url()?>package_delete/<?=$val->id?>" 
+								   class="btn btn-sm btn-clean btn-icon btn-icon-md delete_admin" 
+								   onclick="return confirm('Are you sure you want to delete?')" 
+								   title="Delete" ><i class="la la-trash"></i></a>
+
+
 	                            </td>
 	                        </tr> 
 	                    <?php $i++; } ?>     
