@@ -228,7 +228,7 @@ class Customer_register extends CI_Controller {
 	    	if(!empty($browser_name)){
 				$rc_arr['browser_type'] = $browser_name;
 	    	}
-			echo "<pre>"; print_r($user_data); exit;
+			//echo "<pre>"; print_r($user_data); exit;
 			$this->front_model->update('users', 'email_address', $email, $rc_arr);
 			//echo $user_data->user_role; exit;
 			if($user_data->user_role == 3 OR $user_data->user_role == 4){
