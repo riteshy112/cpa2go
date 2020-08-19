@@ -57,14 +57,14 @@ class Package extends CI_Controller {
     public function addPackage(){
         $user_id = $this->input->post('user_id');
         $planType=$this->input->post('plan_type');
-        if($planType=='Gold'){
+        if($planType=='Priority'){
             $plusCount = 10;
-        }elseif($planType=='Silver'){
+        }elseif($planType=='Premium'){
             $plusCount = 5;
         }
-        elseif($planType=='Bronze'){
+        elseif($planType=='Business'){
             $plusCount = 3;
-        }elseif($planType=='Single'){
+        }elseif($planType=='Individual'){
             $plusCount = 1;
         }
         elseif($planType=='Testing'){
