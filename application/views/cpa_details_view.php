@@ -13,9 +13,12 @@
 				<input type="hidden" name="cpa_id" id="cpa_id" value="<?=$cpa_data->id?>" />
 				<div class="expert_details">
 
-					<?php if(isset($no_of_question_count)) { ?>
-						<p style="text-align:right;"><span style="background-color:#3AFFFF;color:black;">Available questions : <?php echo $no_of_question_count;?></span></p>
-					<?php } ?>
+					<?php //if(isset($no_of_question_count)) { ?>
+						<!-- <p style="text-align:right;"><span style="background-color:#3AFFFF;color:black;"> -->
+						<!-- Available questions :  -->
+						<?php //echo $no_of_question_count;?>
+						<!-- </span></p> -->
+					<?php //} ?>
 					
 					<div class="ed_profilepic">
 						<?php $user_image = !empty($cpa_data->user_image) ? $cpa_data->user_image : base_url().'assets/images/unknown-512.png'; ?>
@@ -88,6 +91,9 @@
 					<div class="ed_question">
 						<div class="ed_title green">
 							<h3>Ask Question as</h3>
+
+
+							
 							
 							<?php if($no_of_question_count == 0){ ?>	
 							   <a href="/cpa2go/pack_list" >Buy Packages</a>
@@ -226,6 +232,12 @@
 									</div>
 									<div class="edqc_btn">
 										<button type="button" class="btn btn-primary add_question">Submit</button>
+										</br>
+									
+										</br>
+										<?php if(isset($no_of_question_count)) { ?>
+										<p>Available questions : <?php echo $no_of_question_count;?></p>
+										<?php } ?>
 									</div>
 								</form>
 							</div>
@@ -334,7 +346,7 @@
 					<div class="row">
 						<div class="col-sm-12" style="margin-top: 20px;">
 						<!-- <p class="paym_turm"><span style="color:red;">Important Notice* Payment will be processed in full upon submission of the answer to your query by the CPA. A response in 24 hours is guaranteed or the answer is free.</span></p> -->
-						<p class="paym_turm"><span style="color:red;">Important Notice*  A response in 24 hours is guaranteed or the answer is free.</span></p>
+						<p class="paym_turm"><span style="color:red;">Important Notice* If the CPA doesn't answer within 24 hours you will get back your question availability.</span></p>
 						</div>	
 					</div>
 				
@@ -350,11 +362,11 @@
 <script type="text/javascript">
 	$('#text_button').click(function(){
 		//var inner_html = "<span style='color:red;''>Important Notice* Payment will be processed in full upon submission of the answer to your query by the CPA. A response in 24 hours is guaranteed or the answer is free.</span>";
-		var inner_html = "<span style='color:red;''>Important Notice* A response in 24 hours is guaranteed or the answer is free.</span>";
+		var inner_html = "<span style='color:red;''>Important Notice* If the CPA doesn't answer within 24 hours you will get back your question availability.</span>";
 		$('.paym_turm').html(inner_html);
 	});
 	$('#audio_button').click(function(){
-		var inner_html = "<span style='color:red;''>Important Notice* A response in 24 hours is guaranteed or the answer is free.</span>";
+		var inner_html = "<span style='color:red;''>Important Notice* If the CPA doesn't answer within 24 hours you will get back your question availability.</span>";
 		$('.paym_turm').html(inner_html);
 	});
 	$('#video_button').click(function(){

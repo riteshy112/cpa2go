@@ -56,9 +56,9 @@
 							
 								<?php if(isset($current_plan_id) && $current_plan_id== $value->id){ ?>
 									
-									<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" class="ecbd_last_btn buy" >Active Package</a>
+									<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" class="ecbd_last_btn buy" >CURRENT PACKAGE</a>
 								<?php }else{ ?>
-									<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" style="background-color:#007bff !important" class="ecbd_last_btn buy">Buy</a>
+									<a href="#" plan="<?php echo $value->id; ?>" price="<?php echo $value->price ;?>" style="background-color:#007bff !important" class="ecbd_last_btn buy">BUY NOW</a>
 								<?php }?>
 								
 							</div>
@@ -82,9 +82,9 @@
 		<div class="row">
 			<div class="ec_box d-inline-block col-lg-12 col-md-12 col-sm-12 col-12 text-left">
 				<p style="color:red">**Terms and Conditions</p>
-				<p style="color:red">1) Users can rollover their remaining question count to the next month regardless if they choose to renew their subscription or not.</p>
-		       
-				<p style="color:red">2) Refunds are only possible within 30 days if no questions were used. </p>							
+				<!-- <p style="color:red">1) Users can rollover their remaining question count to the next month regardless if they choose to renew their subscription or not.</p>
+		        -->
+				<p style="color:red"> Refunds are only possible within 30 days if no questions were used. </p>							
 			</div>
 		
 		</div>

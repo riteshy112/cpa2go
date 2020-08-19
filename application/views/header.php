@@ -58,7 +58,7 @@
 								<ul class="navbar-nav align-items-center">
 
 									<li class="nav-item nav_dropdown_box_link">
-										<a class="nav-link <?php if($class == 'package_list'){ ?>active<?php }?>" href="<?=base_url('pack_list')?>">Packages</a>
+										<a class="nav-link <?php if($class == 'package_list'){ ?>active<?php }?>" href="<?=base_url('pack_list')?>">Subscriptions</a>
 									</li>
 									<li class="nav-item nav_dropdown_box_link">
 										<a class="nav-link <?php if($class == 'cpa_details'){ ?>active<?php }?>" href="<?=base_url('cpa_list')?>">Ask a Question</a>
