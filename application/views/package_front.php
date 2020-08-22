@@ -12,7 +12,7 @@
 
            <?php 
            
-	if($purchase_type=='web'){
+	if($purchase_type=='web' || $purchase_type==''){
            foreach ($packages as $key => $value) { ?>
             
           
@@ -73,7 +73,7 @@
 					</div>
 				</div>
 
-            <?php } }else{ ?>
+            <?php } }elseif($purchase_type!='' && $purchase_type!='web'){ ?>
 
 
 				<div class="row">
