@@ -614,6 +614,7 @@ class Question_answer extends CI_Controller {
      //   $updateDataQuestionCount = array('no_of_question_count'=>$newQuestionCount);
      //   $this->front_model->update('users','id',$customer_id,$updateDataQuestionCount);
         $rc_array1['no_of_question_count'] = $newQuestionCount;    
+        $rc_array1['purchase_type'] = 'web'; 
         $this->front_model->update('users', 'id', $customer_id, $rc_array1);
 
 
