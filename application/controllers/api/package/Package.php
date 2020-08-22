@@ -46,7 +46,8 @@ class Package extends CI_Controller {
         $user_id = $this->input->post('user_id');
         $userInfo=$this->api_model->getsinglerow('users','id',$user_id);
         $update_count = $userInfo['no_of_question_count'];
-        $update_data = ['no_of_question_count'=>$update_count];
+        $purchase_type = $userInfo['purchase_type'];
+        $update_data = ['no_of_question_count'=>$update_count,'purchase_type'=>$purchase_type];
         $user_data['message'] = '';
         $user_data['status'] = 'true';
         $user_data['details'] = $update_data;
@@ -57,6 +58,7 @@ class Package extends CI_Controller {
     public function addPackage(){
         $user_id = $this->input->post('user_id');
         $planType=$this->input->post('plan_type');
+        $purchase_type = $this->input->post('purchase_type');
         if($planType=='Priority'){
             $plusCount = 10;
         }elseif($planType=='Premium'){
@@ -77,7 +79,7 @@ class Package extends CI_Controller {
         $userInfo=$this->api_model->getsinglerow('users','id',$user_id);
         $update_count = $userInfo['no_of_question_count'] + $plusCount;
 
-        $update_data = ['no_of_question_count'=>$update_count];
+        $update_data = ['no_of_question_count'=>$update_count,'purchase_type'=>$purchase_type];
         $this->api_model->update('users','id',$user_id,$update_data);
 
         $user_data['message'] = '';
