@@ -82,6 +82,11 @@ class Package extends CI_Controller {
         $update_data = ['no_of_question_count'=>$update_count,'purchase_type'=>$purchase_type];
         $this->api_model->update('users','id',$user_id,$update_data);
 
+
+        if($purchase_type!='web'){
+            $this->api_model->delete('auto_renew_user','user_id',$user_id);
+        }
+
         $user_data['message'] = '';
         $user_data['status'] = 'true';
         $user_data['details'] = $update_data;

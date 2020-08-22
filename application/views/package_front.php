@@ -1,6 +1,9 @@
 <!-- Content Section -->
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+
 <div id="expert">
 	<div class="container">
 		<div class="row">
@@ -9,7 +12,7 @@
 
            <?php 
            
-          // echo "<pre>"; print_r($packages); exit;
+	if($purchase_type=='web'){
            foreach ($packages as $key => $value) { ?>
             
           
@@ -70,7 +73,19 @@
 					</div>
 				</div>
 
-            <?php } ?>
+            <?php } }else{ ?>
+
+
+				<div class="row">
+					<div class="ec_box d-inline-block col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+						<p style="color:#2fc659">You have current subscription active on <?php echo ucfirst($purchase_type); ?>. Kindly cancel your subscription with Apple to make purchase successfully</p>
+					</div>
+				
+				</div>
+
+
+
+			<?php } ?>
 
 
 

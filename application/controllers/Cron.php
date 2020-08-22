@@ -40,8 +40,15 @@ class Cron extends CI_Controller
             $current_package = $query->row(); 
             $current_date = date('Y-m-d H:i:s');
 
+
+          
+            $this->db->where('id', $value->user_id);
+            $this->db->select('*');
+            $this->db->from('users');
+            $query1 =  $this->db->get(); 
+            $query1_data= $query->row(); 
            
-            if($current_date > $current_package->plan_end_date){
+            if($current_date > $current_package->plan_end_date && $query1_data->purchase_type=='web'){
                
 
                 require_once(FCPATH.'application/third_party/stripe/init.php');

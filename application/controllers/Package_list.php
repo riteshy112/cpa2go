@@ -26,6 +26,7 @@ class Package_list extends CI_Controller {
         $customer_id = $user_deta->id;
         $cust_data = $this->front_model->getsinglerow('users','id',$customer_id);
        
+        $purchase_type = $cust_data->purchase_type;
         $no_of_question_count=$cust_data->no_of_question_count;
 
         $this->db->order_by("id", "desc");
@@ -59,6 +60,7 @@ class Package_list extends CI_Controller {
         
 
         $data['user_id'] = $customer_id;
+        $data['purchase_type'] = $purchase_type;
 
 
         $autorenewcheck = $this->front_model->getsinglerow('auto_renew_user','user_id',$customer_id);
@@ -66,7 +68,7 @@ class Package_list extends CI_Controller {
         if(!empty($autorenewcheck)){
             $data['autoyes'] = '1';
         }
-
+        
 	    $this->load->view('header');
 		$this->load->view('package_front',$data);
 		$this->load->view('footer');
