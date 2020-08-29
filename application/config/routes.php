@@ -165,6 +165,9 @@ $route['update_notification_status_api'] = 'api/customer/tickets_customer_api/up
 $route['get_cpa_data'] = 'api/customer/cpa_customer_api/get_cpa_data';
 $route['change_status_anw_tkt'] = 'api/customer/tickets_customer_api/change_status_anw_tkt';
 
+$route['clear_notification_api'] = 'api/customer/tickets_customer_api/clear_notification';
+
+
 $route['video_call_request'] = 'api/customer/tickets_customer_api/video_call_request';
 $route['video_call_change_status'] = 'api/customer/tickets_customer_api/video_call_change_status';
 
