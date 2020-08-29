@@ -163,6 +163,7 @@ $route['add_video_comment'] = 'api/customer/tickets_customer_api/add_video_comme
 $route['show_notification_api'] = 'api/customer/tickets_customer_api/show_notification';
 $route['update_notification_status_api'] = 'api/customer/tickets_customer_api/update_notification_status';
 $route['get_cpa_data'] = 'api/customer/cpa_customer_api/get_cpa_data';
+$route['change_status_anw_tkt'] = 'api/customer/tickets_customer_api/change_status_anw_tkt';
 
 $route['video_call_request'] = 'api/customer/tickets_customer_api/video_call_request';
 $route['video_call_change_status'] = 'api/customer/tickets_customer_api/video_call_change_status';
