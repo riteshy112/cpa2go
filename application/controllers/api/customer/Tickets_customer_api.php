@@ -11,7 +11,10 @@ class Tickets_customer_api extends CI_Controller {
 
         $this->load->model('api_model');
 
-    }
+	}
+	
+	
+
 	public function index(){
 		
 		$cpa_id = $this->input->post('cpa_id');			

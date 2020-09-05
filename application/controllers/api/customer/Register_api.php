@@ -12,6 +12,7 @@ class Register_api extends CI_Controller {
     }
 	public function index(){
 
+		
 		$user_id = $this->input->post('user_id');
 		$first_name = $this->input->post('first_name');
 		$last_name = $this->input->post('last_name');
@@ -202,7 +203,7 @@ class Register_api extends CI_Controller {
 		        // $htmlContent .= '<p>Url : '.$url.' </p>';
 		       	$email = $email_address;
 		        $subject = 'Registration Successful';
-				send_email_live($email, $htmlContent, $subject);
+						send_email($email, $htmlContent, $subject);
 
 
 				unset($user_data['password']);
@@ -484,7 +485,8 @@ class Register_api extends CI_Controller {
 	        // $htmlContent .= '<p>Url : '.$url.' </p>';
 	       	$email = $email_address;
 	        $subject = $userdata['message'];
-			send_email_live($email, $htmlContent, $subject);
+					send_email($email, $htmlContent, $subject);
+					//send_email_live($email, $htmlContent, $subject);
 
 			$userdata['status'] = 'true';
 			$userdata['details']= $user_data;
@@ -519,8 +521,9 @@ class Register_api extends CI_Controller {
         $htmlContent .= "<img src='".$image_url."' width='120' height='75'/>";
         // $htmlContent .= '<p>Url : '.$url.' </p>';
        	$email = $email_address;
-        $subject = 'Registration successful with apple';
-		send_email_live($email, $htmlContent, $subject);
+				$subject = 'Registration successful with apple';
+				send_email($email, $htmlContent, $subject);
+				//send_email_live($email, $htmlContent, $subject);
 
 		$userdata['message'] = 'Customer registered with apple';
 		$userdata['status'] = 'true';
