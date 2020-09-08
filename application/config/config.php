@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'https://cpa2go.com';
-$config['base_url'] = 'http://localhost/cpa2go/';
+$config['base_url'] = 'https://demo.lanpdt.com/';
 
 /*
 |--------------------------------------------------------------------------

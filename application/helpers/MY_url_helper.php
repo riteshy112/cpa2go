@@ -125,63 +125,91 @@ function send_email($email, $htmlContent, $subject){
         'protocol'  => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
         'smtp_port' => 465,
-        'smtp_user' => 'metizdev@gmail.com',
-        'smtp_pass' => '123metizdev$',
+        'smtp_user' => 'exs.developer@gmail.com',
+        'smtp_pass' => 'Esolution@123',
         'mailtype'  => 'html',
-        'charset'   => 'utf-8'
+        'charset' => 'iso-8859-1',
+        'wordwrap' => TRUE
     );
     $CI->email->initialize($config);
     $CI->email->set_mailtype("html");
     $CI->email->set_newline("\r\n");
     $CI->email->to($email);
     $CI->email->from('cpa2go@lanpdt.com','CPA2GO');
-    $CI->email->subject('Register Successfully');
+    $CI->email->subject($subject);
     $CI->email->message($htmlContent);
 
     if($CI->email->send())
     {
         return; 
     }else{
-        show_error($CI->email->print_debugger());
+        show_error($CI->email->print_debugger()); 
     }
 }
 
 function send_email_live($email_address, $htmlContent, $subject){
 
-    $from_name = "cpa2go";
-    $from_email = "cpa2go@lanpdt.com";
-     
-     // $header = "From:cpa2go@lanpdt.com \r\n";
-     // //$header .= "Cc:afgh@somedomain.com \r\n";
-     // $header .= "MIME-Version: 1.0\r\n";
-     // $header .= "Content-type: text/html\r\n";
-     
-     // $retval = mail ($email,$subject,$htmlContent,$header);
-
-     // if( $retval == true ) {
-     //    return;
-     // }else {
-     //    echo "Message could not be sent...";
-     // }
-
-
-    // $email_address = "jignesh.gambhava@metizsoft.com";
-    $email = new \SendGrid\Mail\Mail(); 
-    $email->setFrom($from_email, $from_name);
-    $email->setSubject($subject);
-    $email->addTo($email_address, "");
-    $email->addContent(
-        "text/html", $htmlContent
+    $CI = & get_instance();
+    $CI->load->library('email');
+    $config = array(
+        'protocol'  => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'exs.developer@gmail.com',
+        'smtp_pass' => 'Esolution@123',
+        'mailtype'  => 'html',
+        'charset' => 'iso-8859-1',
+        'wordwrap' => TRUE
     );
-    $sendgrid = new \SendGrid('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');
-    try {
-        $response = $sendgrid->send($email);
-        // print $response->statusCode() . "\n";
-        // print_r($response->headers());
-        // print $response->body() . "\n";
-    } catch (Exception $e) {
-        echo $e->getMessage();
+    $CI->email->initialize($config);
+    $CI->email->set_mailtype("html");
+    $CI->email->set_newline("\r\n");
+    $CI->email->to($email_address);
+    $CI->email->from('cpa2go@lanpdt.com','CPA2GO');
+    $CI->email->subject($subject);
+    $CI->email->message($htmlContent);
+
+    if($CI->email->send())
+    {
+        return; 
+    }else{
+      //  show_error($CI->email->print_debugger()); 
     }
+
+    // $from_name = "cpa2go";
+    // $from_email = "cpa2go@lanpdt.com";
+     
+    //  // $header = "From:cpa2go@lanpdt.com \r\n";
+    //  // //$header .= "Cc:afgh@somedomain.com \r\n";
+    //  // $header .= "MIME-Version: 1.0\r\n";
+    //  // $header .= "Content-type: text/html\r\n";
+     
+    //  // $retval = mail ($email,$subject,$htmlContent,$header);
+
+    //  // if( $retval == true ) {
+    //  //    return;
+    //  // }else {
+    //  //    echo "Message could not be sent...";
+    //  // }
+
+
+    // // $email_address = "jignesh.gambhava@metizsoft.com";
+    // $email = new \SendGrid\Mail\Mail(); 
+    // $email->setFrom($from_email, $from_name);
+    // $email->setSubject($subject);
+    // $email->addTo($email_address, "");
+    // $email->addContent(
+    //     "text/html", $htmlContent
+    // );
+    // $sendgrid = new \SendGrid('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');
+    // try {
+    //     $response = $sendgrid->send($email);
+    //     // print $response->statusCode() . "\n";
+    //     // print_r($response->headers());
+    //     // print $response->body() . "\n";
+    // } catch (Exception $e) {
+    //     echo $e->getMessage();
+    // }
 
 
 }
@@ -189,7 +217,33 @@ function send_email_live($email_address, $htmlContent, $subject){
 
 function send_email_contact($email_address, $htmlContent, $subject, $from_name, $from_email){
 
-    
+    $CI = & get_instance();
+    $CI->load->library('email');
+    $config = array(
+        'protocol'  => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'exs.developer@gmail.com',
+        'smtp_pass' => 'Esolution@123',
+        'mailtype'  => 'html',
+        'charset' => 'iso-8859-1',
+        'wordwrap' => TRUE
+    );
+    $CI->email->initialize($config);
+    $CI->email->set_mailtype("html");
+    $CI->email->set_newline("\r\n");
+    $CI->email->to($email_address);
+    $CI->email->from($from_email,$from_name);
+    $CI->email->subject($subject);
+    $CI->email->message($htmlContent);
+
+    if($CI->email->send())
+    {
+        return; 
+    }else{
+       // show_error($CI->email->print_debugger()); 
+    }
+
      // $header = "From:".$from_name."<".$from_email.">\r\n";
      // //$header .= "Cc:afgh@somedomain.com \r\n";
      // $header .= "MIME-Version: 1.0\r\n";
@@ -204,6 +258,7 @@ function send_email_contact($email_address, $htmlContent, $subject, $from_name, 
      // }
 
     //$email_address = "marsshow101@gmail.com";
+<<<<<<< HEAD
     $email = new \SendGrid\Mail\Mail(); 
     $email->setFrom($from_email, $from_name);
     $email->setSubject($subject);
@@ -214,12 +269,32 @@ function send_email_contact($email_address, $htmlContent, $subject, $from_name, 
     $sendgrid = new \SendGrid('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');
     try {
         $response = $sendgrid->send($email);
-        // print $response->statusCode() . "\n";
-        // print_r($response->headers());
-        // print $response->body() . "\n";
+        //  print $response->statusCode() . "\n";
+        //  print_r($response->headers());
+        //  print $response->body() . "\n";
     } catch (Exception $e) {
-        //echo 'Caught exception: '. $e->getMessage() ."\n";
+       // echo 'Caught exception: '. $e->getMessage() ."\n";
     }
+=======
+
+
+    // $email = new \SendGrid\Mail\Mail(); 
+    // $email->setFrom($from_email, $from_name);
+    // $email->setSubject($subject);
+    // $email->addTo($email_address, "");
+    // $email->addContent(
+    //     "text/html", $htmlContent
+    // );
+    // $sendgrid = new \SendGrid('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');
+    // try {
+    //     $response = $sendgrid->send($email);
+    //     //  print $response->statusCode() . "\n";
+    //     //  print_r($response->headers());
+    //     //  print $response->body() . "\n";
+    // } catch (Exception $e) {
+    //    // echo 'Caught exception: '. $e->getMessage() ."\n";
+    // }
+>>>>>>> 24534f76687a33c3ffea596e463553df7446f5a1
 
 }
 
