@@ -199,7 +199,8 @@ class Register_api extends CI_Controller {
 				$htmlContent = '<p>Hello, '.$first_name.'</p>';
 		        $htmlContent .= '<h4>You are successfully registered in CPA2GO</h1>';
 		        $htmlContent .= '<p>Thanks</p>';
-		        $htmlContent .= "<img src='".$image_url."' width='120' height='75'/>";
+						$htmlContent .= "<img src='".$image_url."' width='120' height='75'/>";
+					
 		        // $htmlContent .= '<p>Url : '.$url.' </p>';
 		       	$email = $email_address;
 		        $subject = 'Registration Successful';

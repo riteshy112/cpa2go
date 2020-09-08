@@ -120,7 +120,7 @@ function browser_list(){
 
 function send_email($email, $htmlContent, $subject){
     $CI = & get_instance();
-    $CI->load->library('email');
+   
     $config = Array(
         'protocol' => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -149,7 +149,7 @@ function send_email($email, $htmlContent, $subject){
 function send_email_live($email_address, $htmlContent, $subject){
 
     $CI = & get_instance();
-    $CI->load->library('email');
+ 
     $config = Array(
         'protocol' => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -215,7 +215,7 @@ function send_email_live($email_address, $htmlContent, $subject){
 function send_email_contact($email_address, $htmlContent, $subject, $from_name, $from_email){
 
     $CI = & get_instance();
-    $CI->load->library('email');
+  
     $config = Array(
         'protocol' => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
