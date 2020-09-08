@@ -76,15 +76,11 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-<<<<<<< HEAD
-	'username' => 'lanpdtco_demo',
-	'password' => 'lanpdtco_demo',
-	'database' => 'lanpdtco_demo',
-=======
+
 	'username' => 'root',
 	'password' => 'root',
 	'database' => 'lanpdtco_cpa2go',
->>>>>>> 24534f76687a33c3ffea596e463553df7446f5a1
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

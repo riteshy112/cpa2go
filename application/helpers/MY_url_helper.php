@@ -121,20 +121,18 @@ function browser_list(){
 function send_email($email, $htmlContent, $subject){
     $CI = & get_instance();
     $CI->load->library('email');
-    $config = array(
-        'protocol'  => 'smtp',
+    $config = Array(
+        'protocol' => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
         'smtp_port' => 465,
         'smtp_user' => 'exs.developer@gmail.com',
         'smtp_pass' => 'Esolution@123',
-        'mailtype'  => 'html',
-        'charset' => 'iso-8859-1',
-        'wordwrap' => TRUE
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1'
     );
-    $CI->email->initialize($config);
-    $CI->email->set_mailtype("html");
-    $CI->email->set_newline("\r\n");
-    $CI->email->to($email);
+     $CI->load->library('email', $config);
+     $CI->email->set_newline("\r\n");
+     $CI->email->to($email);
     $CI->email->from('cpa2go@lanpdt.com','CPA2GO');
     $CI->email->subject($subject);
     $CI->email->message($htmlContent);
@@ -146,6 +144,7 @@ function send_email($email, $htmlContent, $subject){
         show_error($CI->email->print_debugger()); 
     }
 }
+
 
 function send_email_live($email_address, $htmlContent, $subject){
 
