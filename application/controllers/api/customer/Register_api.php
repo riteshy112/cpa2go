@@ -186,7 +186,7 @@ class Register_api extends CI_Controller {
 							$errData['message'] = $error;
 							$errData['status'] = 'false';
 							$errData['details'] = $error;
-							echo json_encode($errData);
+							echo json_encode($errData);exit;
 						// 	echo '<pre>';
 						// print_r($error);
 						// echo '</pre>';die;
