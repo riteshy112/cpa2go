@@ -123,7 +123,7 @@ function send_email($email, $htmlContent, $subject){
     $CI->load->library('email');
     $config = array(
         'protocol'  => 'smtp',
-        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_host' => 'ssl://smtp.gmail.com',
         'smtp_port' => 465,
         'smtp_user' => 'exs.developer@gmail.com',
         'smtp_pass' => 'Esolution@123',
