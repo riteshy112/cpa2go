@@ -150,19 +150,17 @@ function send_email_live($email_address, $htmlContent, $subject){
 
     $CI = & get_instance();
     $CI->load->library('email');
-    $config = array(
-        'protocol'  => 'smtp',
+    $config = Array(
+        'protocol' => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
         'smtp_port' => 465,
         'smtp_user' => 'exs.developer@gmail.com',
         'smtp_pass' => 'Esolution@123',
-        'mailtype'  => 'html',
-        'charset' => 'iso-8859-1',
-        'wordwrap' => TRUE
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1'
     );
-    $CI->email->initialize($config);
-    $CI->email->set_mailtype("html");
-    $CI->email->set_newline("\r\n");
+     $CI->load->library('email', $config);
+     $CI->email->set_newline("\r\n");
     $CI->email->to($email_address);
     $CI->email->from('cpa2go@lanpdt.com','CPA2GO');
     $CI->email->subject($subject);
@@ -218,19 +216,17 @@ function send_email_contact($email_address, $htmlContent, $subject, $from_name, 
 
     $CI = & get_instance();
     $CI->load->library('email');
-    $config = array(
-        'protocol'  => 'smtp',
+    $config = Array(
+        'protocol' => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
         'smtp_port' => 465,
         'smtp_user' => 'exs.developer@gmail.com',
         'smtp_pass' => 'Esolution@123',
-        'mailtype'  => 'html',
-        'charset' => 'iso-8859-1',
-        'wordwrap' => TRUE
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1'
     );
-    $CI->email->initialize($config);
-    $CI->email->set_mailtype("html");
-    $CI->email->set_newline("\r\n");
+     $CI->load->library('email', $config);
+     $CI->email->set_newline("\r\n");
     $CI->email->to($email_address);
     $CI->email->from($from_email,$from_name);
     $CI->email->subject($subject);
