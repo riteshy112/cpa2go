@@ -132,6 +132,7 @@ function send_email($email, $htmlContent, $subject){
     );
      $CI->load->library('email', $config);
      $CI->email->set_newline("\r\n");
+    $CI->email->set_header('Content-Type', 'text/html');
      $CI->email->to($email);
     $CI->email->from('cpa2go@lanpdt.com','CPA2GO');
     $CI->email->subject($subject);
@@ -161,6 +162,7 @@ function send_email_live($email_address, $htmlContent, $subject){
     );
      $CI->load->library('email', $config);
      $CI->email->set_newline("\r\n");
+     $CI->email->set_header('Content-Type', 'text/html');
     $CI->email->to($email_address);
     $CI->email->from('cpa2go@lanpdt.com','CPA2GO');
     $CI->email->subject($subject);
@@ -227,6 +229,7 @@ function send_email_contact($email_address, $htmlContent, $subject, $from_name, 
     );
      $CI->load->library('email', $config);
      $CI->email->set_newline("\r\n");
+     $CI->email->set_header('Content-Type', 'text/html');
     $CI->email->to($email_address);
     $CI->email->from($from_email,$from_name);
     $CI->email->subject($subject);
