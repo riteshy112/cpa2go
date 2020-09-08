@@ -176,7 +176,10 @@ class Register_api extends CI_Controller {
 	             
 					$config['file_name'] = time() .'_' . $_FILES['user_image']['name'];
 
-
+		echo '<pre>';
+			print_r($config);
+			echo '</pre>';die;
+			exit;
 
 	        $this->load->library('upload', $config);
 				
@@ -185,7 +188,7 @@ class Register_api extends CI_Controller {
 
 							$errData['message'] = $error;
 							$errData['status'] = 'false';
-							$errData['details'] = $error;
+						
 							echo json_encode($errData);exit;
 						// 	echo '<pre>';
 						// print_r($error);
