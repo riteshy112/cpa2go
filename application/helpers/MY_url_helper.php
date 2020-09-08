@@ -258,24 +258,6 @@ function send_email_contact($email_address, $htmlContent, $subject, $from_name, 
      // }
 
     //$email_address = "marsshow101@gmail.com";
-<<<<<<< HEAD
-    $email = new \SendGrid\Mail\Mail(); 
-    $email->setFrom($from_email, $from_name);
-    $email->setSubject($subject);
-    $email->addTo($email_address, "");
-    $email->addContent(
-        "text/html", $htmlContent
-    );
-    $sendgrid = new \SendGrid('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');
-    try {
-        $response = $sendgrid->send($email);
-        //  print $response->statusCode() . "\n";
-        //  print_r($response->headers());
-        //  print $response->body() . "\n";
-    } catch (Exception $e) {
-       // echo 'Caught exception: '. $e->getMessage() ."\n";
-    }
-=======
 
 
     // $email = new \SendGrid\Mail\Mail(); 
@@ -294,7 +276,6 @@ function send_email_contact($email_address, $htmlContent, $subject, $from_name, 
     // } catch (Exception $e) {
     //    // echo 'Caught exception: '. $e->getMessage() ."\n";
     // }
->>>>>>> 24534f76687a33c3ffea596e463553df7446f5a1
 
 }
 
