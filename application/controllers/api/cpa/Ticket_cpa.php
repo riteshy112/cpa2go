@@ -173,7 +173,25 @@ class Ticket_cpa extends CI_Controller {
         $this->api_model->update('customer_tickets', 'ticket_number', $ticket_number, $rc_array);
 
         $this->notification_create_tkt($ticket_data['customer_id'], $ticket_data['cpa_id'], $ticket_number);
-		$userdata['message'] = 'Submited your ticket successfully';
+				
+					  $customer_data = $this->api_model->getsinglerow('users', 'id', $ticket_data['customer_id']);
+					  $email_address = $customer_data['email_address'];
+						$image_url = base_url().'assets/front/image/main_logo.png';
+						$htmlContent = '<p>Hello, '.$first_name.'</p>';
+						$htmlContent .= '<h4>Ticket '.$ticket_number.' Has Been Answered.</h4>';
+						$htmlContent .= '<h4>Review Answer : <a href="https://www.cpa2go.com/"></a> </h4>';
+					  $htmlContent .= '<p>Thanks</p>';
+						$htmlContent .= "<img src='".$image_url."' width='120' height='75'/>";
+					
+		        // $htmlContent .= '<p>Url : '.$url.' </p>';
+		       	$email = $email_address;
+		        $subject = 'CPA2GO: Question '.$ticket_number.' Has Been Answered.';
+						send_email($email, $htmlContent, $subject);
+	
+	
+	
+	
+				$userdata['message'] = 'Submited your ticket successfully';
 		$userdata['status'] = 'true';
 		$userdata['ticket_number'] = $ticket_number;
 		echo json_encode($userdata);
