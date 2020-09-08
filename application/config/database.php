@@ -77,9 +77,9 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'lanpdtco_cpa2go',
+	'username' => 'lanpdtco_demo',
+	'password' => 'lanpdtco_demo',
+	'database' => 'lanpdtco_demo',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
