@@ -7,7 +7,7 @@ class Register_api extends CI_Controller {
 
         //ini_set('display_errors', 1);
         parent::__construct();
-
+				$this->load->helper(array('form', 'url'));
         $this->load->model('api_model');
     }
 	public function index(){
@@ -172,14 +172,26 @@ class Register_api extends CI_Controller {
 
 		if (!empty($_FILES['user_image']['name'])) {
 			
-			$config['upload_path']   = './uploads/user_images/'; 
-	        $config['allowed_types'] = 'gif|jpg|png'; 	      
-	        $config['file_name'] = time() .'_' . $_FILES['user_image']['name'];
+				  $config['upload_path']   = './uploads/user_images/'; 
+	        $config['allowed_types'] = 'gif|jpg|png|jpeg'; 	      
+					$config['file_name'] = time() .'_' . $_FILES['user_image']['name'];
+
+
+
 	        $this->load->library('upload', $config);
 				
 	        if ( ! $this->upload->do_upload('user_image')) {
-	            $error = array('error' => $this->upload->display_errors()); 
-	            $this->load->view('upload_form', $error); 
+							$error = array('error' => $this->upload->display_errors()); 
+
+							$errData['message'] = $error;
+							$errData['status'] = 'false';
+							$errData['details'] = $error;
+							echo json_encode($errData);
+						// 	echo '<pre>';
+						// print_r($error);
+						// echo '</pre>';die;
+						// exit;
+	           // $this->load->view('upload_form', $error); 
 	        }else { 
 	            $uplod_data = array('upload_data' => $this->upload->data()); 
 	            $rc_array['user_image'] = $uplod_data['upload_data']['file_name'];
@@ -257,28 +269,35 @@ class Register_api extends CI_Controller {
 				$user_data = $this->api_model->getsinglerow('users', 'id', $user_id);
 				unset($user_data['password']);
 				unset($user_data['main_admin_id']);
-				if($user_data['cpa_description'] == NULL){
+
+
+					// echo '<pre>';
+					// 	print_r($user_data['company_name']);
+					// 	echo '</pre>';die;
+					// 	exit;
+
+				if(isset($user_data) &&  isset($user_data['cpa_description']) &&  $user_data['cpa_description'] == NULL){
 					$user_data['cpa_description'] = '';
 				}
-				if($user_data['cpa_service'] == NULL){
+				if(isset($user_data) && isset($user_data['cpa_service']) &&  $user_data['cpa_service'] == NULL){
 					$user_data['cpa_service'] = '';
 				}
-				if($user_data['company_name'] == NULL OR $user_data['company_name'] == "null"){
+				if(isset($user_data) && isset($user_data['company_name']) && ($user_data['company_name'] == NULL OR $user_data['company_name'] == "null")){
 					$user_data['company_name'] = '';
 				}
-				if($user_data['phone_number'] == NULL OR $user_data['phone_number'] == "null"){
+				if(isset($user_data) && ($user_data['phone_number'] == NULL OR $user_data['phone_number'] == "null")){
 					$user_data['phone_number'] = '';
 				}
-				if($user_data['city'] == NULL OR $user_data['city'] == "null"){
+				if(isset($user_data) && ($user_data['city'] == NULL OR $user_data['city'] == "null")){
 					$user_data['city'] = '';
 				}
-				if($user_data['user_name'] == NULL OR $user_data['user_name'] == "null"){
+				if(isset($user_data) && ($user_data['user_name'] == NULL OR $user_data['user_name'] == "null")){
 					$user_data['user_name'] = '';
 				}
-				if($user_data['web_address'] == NULL OR $user_data['web_address'] == "null"){
+				if(isset($user_data) && ($user_data['web_address'] == NULL OR $user_data['web_address'] == "null")){
 					$user_data['web_address'] = '';
 				}
-				if($user_data['address'] == NULL OR $user_data['address'] == "null"){
+				if(isset($user_data) && ($user_data['address'] == NULL OR $user_data['address'] == "null")){
 					$user_data['address'] = '';
 				}
 				$user_data['user_image'] = !empty($user_data['user_image']) ? base_url().'uploads/user_images/'.$user_data['user_image'] : ''; 
