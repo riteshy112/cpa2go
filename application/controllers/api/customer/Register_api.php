@@ -203,7 +203,7 @@ class Register_api extends CI_Controller {
 		        // $htmlContent .= '<p>Url : '.$url.' </p>';
 		       	$email = $email_address;
 		        $subject = 'Registration Successful';
-						send_email($email, $htmlContent, $subject);
+						 send_email($email, $htmlContent, $subject);
 
 
 				unset($user_data['password']);
