@@ -173,7 +173,7 @@ class Register_api extends CI_Controller {
 		if (!empty($_FILES['user_image']['name'])) {
 			
 				  $config['upload_path']   = './uploads/user_images/'; 
-	        $config['allowed_types'] = 'gif|jpg|png|jpeg'; 	      
+	        //$config['allowed_types'] = 'gif|jpg|png|jpeg'; 	      
 					$config['file_name'] = time() .'_' . $_FILES['user_image']['name'];
 
 
