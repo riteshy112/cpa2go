@@ -78,7 +78,16 @@
 
 				<div class="row">
 					<div class="ec_box d-inline-block col-lg-12 col-md-12 col-sm-12 col-12 text-left">
-						<p style="color:#2fc659">You have current subscription active on <?php echo ucfirst($purchase_type); ?>. Kindly cancel your subscription with Apple to make purchase successfully</p>
+
+					  <?php if($purchase_type=='ios'){ ?>
+							<p style="color:#2fc659">You have a current subscription active on <?php echo ucfirst($purchase_type); ?>. Please cancel your subscription with Apple to make purchase successfully</p>
+					
+						<?php }else{ ?>
+								<p style="color:#2fc659">You have a current subscription active on <?php echo ucfirst($purchase_type); ?>. Please cancel your subscription with Google to make purchase successfully</p>
+					
+						<?php } ?> 		
+					
+					
 					</div>
 				
 				</div>
