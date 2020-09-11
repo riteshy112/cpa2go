@@ -269,6 +269,10 @@
 
 									<div class="edqc_note">
 										<p>Click to record your question</p>
+										<?php if(isset($no_of_question_count)) { ?>
+										<p>Available questions : <?php echo $no_of_question_count;?></p>
+										</br>
+										<?php } ?>
 									</div>
 									<div class="status_record">
 									</div>
@@ -296,6 +300,12 @@
 								<form action="#" id="" method="post">
 									<div class="form-group m-0">
 										<label for="ques">Question *</label>
+
+										<?php if(isset($no_of_question_count)) { ?>
+										<p>Available questions : <?php echo $no_of_question_count;?></p>
+										</br>
+										<?php } ?>
+
 									</div>
 									
 									<!-- Video call -->
@@ -370,7 +380,8 @@
 		$('.paym_turm').html(inner_html);
 	});
 	$('#video_button').click(function(){
-		var inner_html = "<span style='color:red;''>Important Notice* A video call with a CPA will be initiated. It may take a few minutes for a CPA to respond. Please stay on this page. Payment will be processed in full upon completion of the call.</span>";
+		//var inner_html = "<span style='color:red;''>Important Notice* A video call with a CPA will be initiated. It may take a few minutes for a CPA to respond. Please stay on this page. Payment will be processed in full upon completion of the call.</span>";
+		var inner_html = "<span style='color:red;''>Important Notice* A video call with a CPA will be initiated. It may take a few minutes for a CPA to respond. Please stay on this page.</span>";
 		$('.paym_turm').html(inner_html);
 	});
 	
