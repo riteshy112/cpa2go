@@ -175,7 +175,8 @@ class Ticket_cpa extends CI_Controller {
         $this->notification_create_tkt($ticket_data['customer_id'], $ticket_data['cpa_id'], $ticket_number);
 				
 					  $customer_data = $this->api_model->getsinglerow('users', 'id', $ticket_data['customer_id']);
-					  $email_address = $customer_data['email_address'];
+						$email_address = $customer_data['email_address'];
+						$first_name = $customer_data['first_name'];
 						$image_url = base_url().'assets/front/image/main_logo.png';
 						$htmlContent = '<p>Hello, '.$first_name.'</p>';
 						$htmlContent .= '<h4>Ticket '.$ticket_number.' Has Been Answered.</h4>';
