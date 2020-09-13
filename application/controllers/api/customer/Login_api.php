@@ -142,7 +142,7 @@ class Login_api extends CI_Controller {
 
 		$rc_arr['device_token'] = '';
 		$rc_arr['device_type'] = '';
-		// $rc_arr['active'] = 0;
+		$rc_arr['active'] = 0;
 		$this->api_model->update('users', 'id', $user_id, $rc_arr);
 
 		$userdata['message'] = 'Logout successfully';
